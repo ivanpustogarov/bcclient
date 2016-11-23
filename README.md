@@ -82,15 +82,16 @@ Using with Tor
 In order to use "./bcclient" program through tor and use a specific Exit
 node, you can use the following configuration;
 
- -- Launch Tor on on a separate local machine with the following lines
-    in torrc:
+1. Launch Tor on on a separate local machine with the following lines in torrc:
+
 	ExitNodes <exit-node-name> 
 	StrictExitNodes 1
 	SocksPort <your-torproxy:9100>
 
--- Install badvpn
+2. Install badvpn
 
--- Create new tuntap interface:
+3. Create new tuntap interface:
+
 	$sudo ip tuntap add dev tun0 mode tun
 	$sudo ip link set tun0 up
 	$sudo ip addr add 10.0.0.1/24 dev tun0
@@ -99,6 +100,7 @@ node, you can use the following configuration;
 	$sudo route add default gw 10.0.0.2
 
 In order to put everything back:
+
 	$sudo route del default
 	$sudo route add default gw 10.91.0.1
 	$sudo ip tuntap del dev tun0 mode tun
