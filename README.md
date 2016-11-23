@@ -57,7 +57,7 @@ you have to compile it first.
 	$ cd ../
 	$ make
 
-I tested in Ubuntu 12.04, Ubuntu14.04, and Debian 8.4.
+I tested the tool in Ubuntu 12.04, Ubuntu14.04, and Debian 8.4.
 If it does not compile, you might want to try older version of libboost.
 
 ======================
@@ -82,15 +82,15 @@ Using with Tor
 In order to use "./bcclient" program through tor and use a specific Exit
 node, you can use the following configuration;
 
-1. Launch Tor on on a separate local machine with the following lines in torrc:
+Launch Tor on on a separate local machine with the following lines in torrc:
 
 	ExitNodes <exit-node-name> 
 	StrictExitNodes 1
 	SocksPort <your-torproxy:9100>
 
-2. Install badvpn
+Install badvpn
 
-3. Create new tuntap interface:
+Create new tuntap interface:
 
 	$sudo ip tuntap add dev tun0 mode tun
 	$sudo ip link set tun0 up
