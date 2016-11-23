@@ -48,14 +48,14 @@ This software relies on a specific commit of libbitcoin (and probably
 will not work with other commits). This specific commit is included and
 you have to compile it first.
 
-$ sudo apt-get install build-essential autoconf automake libtool libboost-all-dev pkg-config libcurl4-openssl-dev libleveldb-dev shtool
-$ cd libbitcoin
-$ ln -s $(which shtool)
-$ autoreconf -i
-$ ./configure --enable-leveldb
-$ make
-$ cd ../
-$ make
+	$ sudo apt-get install build-essential autoconf automake libtool libboost-all-dev pkg-config libcurl4-openssl-dev libleveldb-dev shtool
+	$ cd libbitcoin
+	$ ln -s $(which shtool)
+	$ autoreconf -i
+	$ ./configure --enable-leveldb
+	$ make
+	$ cd ../
+	$ make
 
 I tested in Ubuntu 12.04, Ubuntu14.04, and Debian 8.4.
 If it does not compile, you might want to try older version of libboost.
@@ -65,15 +65,14 @@ Using with testnet
 ======================
 By default the tool works only with mainnet.
 You will need to recompile it to work testnet.
-First
 
-$ make clean
-$ cd libbitcoin
-$ make clean
-$ ./configure --enable-leveldb --enable-testnet
-$ make
-$ cd ../
-$ make
+	$ make clean
+	$ cd libbitcoin
+	$ make clean
+	$ ./configure --enable-leveldb --enable-testnet
+	$ make
+	$ cd ../
+	$ make
 
 Remember to use '-p 18333' (default is 8333)
 
@@ -82,24 +81,27 @@ Using with Tor
 ==========================
 In order to use "./bcclient" program through tor and use a specific Exit
 node, you can use the following configuration;
+
  -- Launch Tor on on a separate local machine with the following lines
     in torrc:
-       ExitNodes <exit-node-name> 
-       StrictExitNodes 1
-       SocksPort <your-torproxy:9100>
+	ExitNodes <exit-node-name> 
+	StrictExitNodes 1
+	SocksPort <your-torproxy:9100>
+
 -- Install badvpn
+
 -- Create new tuntap interface:
-   sudo ip tuntap add dev tun0 mode tun
-   sudo ip link set tun0 up
-   sudo ip addr add 10.0.0.1/24 dev tun0
-   badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr <your-torproxy>:9100
-   sudo route del default
-   sudo route add default gw 10.0.0.2
+	$sudo ip tuntap add dev tun0 mode tun
+	$sudo ip link set tun0 up
+	$sudo ip addr add 10.0.0.1/24 dev tun0
+	$badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr <your-torproxy>:9100
+	$sudo route del default
+	$sudo route add default gw 10.0.0.2
 
 In order to put everything back:
- sudo route del default
- sudo route add default gw 10.91.0.1
- sudo ip tuntap del dev tun0 mode tun
+	$sudo route del default
+	$sudo route add default gw 10.91.0.1
+	$sudo ip tuntap del dev tun0 mode tun
 
 
 ================================
