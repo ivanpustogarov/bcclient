@@ -34,7 +34,7 @@ This software was used when testing the attack described the following
 papers:
 
 [1] Alex Biryukov, Ivan Pustogarov. Bitcoin over Tor isn’t a good Idea.
-To appear at IEEE Symposium on Security and Privacy (Oakland) 2015. 
+IEEE Symposium on Security and Privacy (Oakland) 2015. 
 
 [2] Alex Biryukov, Dmitry Khovratovich, Ivan Pustogarov. Deanonymisation
 of Clients in Bitcoin P2P Network. ACM Conference on Computer and
