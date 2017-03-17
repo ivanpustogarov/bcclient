@@ -41,9 +41,7 @@ of Clients in Bitcoin P2P Network. ACM Conference on Computer and
 Communications Security 2014 (ACM CCS): 15-29 
 
 
-==========================
-Compile Instructions
-==========================
+## Compile Instructions
 This software relies on a specific commit of libbitcoin (and probably
 will not work with other commits). This specific commit is included and
 you have to compile it first.
@@ -60,9 +58,7 @@ you have to compile it first.
 I tested the tool in Ubuntu 12.04, Ubuntu14.04, and Debian 8.4.
 If it does not compile, you might want to try older version of libboost.
 
-======================
-Using with testnet
-======================
+## Using with testnet
 By default the tool works only with mainnet.
 You will need to recompile it to work testnet.
 
@@ -76,9 +72,8 @@ You will need to recompile it to work testnet.
 
 Remember to use '-p 18333' (default is 8333)
 
-==========================
-Using with Tor
-==========================
+
+## Using with Tor
 In order to use "./bcclient" program through tor and use a specific Exit
 node, you can use the following configuration;
 
@@ -106,9 +101,7 @@ In order to put everything back:
 	$sudo ip tuntap del dev tun0 mode tun
 
 
-================================
-Output format 
-================================
+## Output format 
 When ./bcclient receives a transaction it prints by default it in a
 succinct way. In order to include fields description, use '-v' flag. 
 
