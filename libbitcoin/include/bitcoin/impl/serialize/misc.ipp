@@ -132,7 +132,7 @@ void satoshi_load(const Iterator first, const Iterator last,
         packet.addresses.push_back(addr);
     }
     BITCOIN_ASSERT(deserial.iterator() == first + satoshi_raw_size(packet));
-    BITCOIN_ASSERT(deserial.iterator() == last);
+    //BITCOIN_ASSERT(deserial.iterator() == last);
 }
 
 // getaddr messages
