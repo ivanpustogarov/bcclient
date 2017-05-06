@@ -340,6 +340,7 @@ void print_help(int exval)
   printf("    addr=<addr_file> |                 'addr=<addr_file>' sends messages with addresses found in <addr_file> ('IP PORT' per line)\n");
   printf("    addr=<addr_file>=<timestamp_offset> use <timestamp_offset> to offset addresses timestamps from current time (0 is default)        \n");
   printf("  -p PORT                              PORT of the peer at IPADDR (default is 8333)                                \n");
+  printf("  --listen-port PORT                   listen on this port                                                         \n");
   printf("  -o LOG_FILE                          redirect output to file'                                                    \n");
   printf("  -v                                   print debug info.                                                           \n");
   printf("                                                                                                                   \n");
@@ -365,6 +366,7 @@ int main(int argc, char *argv[])
   char *logFilename = NULL; // where to put log messages, NULL means print to terminal
 
   uint16_t port = 8333;  // Port of the peer specified in the command line
+  uint16_t listen_port = 8333;  // Port on which we listen for incoming connections
   uint32_t n = 1; // Number of connections that will be established to each provided peer address
   bool fPrintDebug = false;
   int begin = 0;  // If a file with peers is proveded, read starting from this address
@@ -384,6 +386,7 @@ int main(int argc, char *argv[])
       {"tries", required_argument, NULL, 130},
       {"delay", required_argument, NULL, 131},
       {"addrmsg-size", required_argument, NULL, 132},
+      {"listen-port", required_argument, NULL, 133},
       {"exit-when-all-connected", no_argument, &fExitWhenAllConnected, 1},
       {NULL, 0, NULL, 0}
   };
@@ -443,6 +446,9 @@ int main(int argc, char *argv[])
         break;
       case 132:
         addr_per_addr_message = atoi(optarg);
+        break;
+      case 133:
+        listen_port = atoi(optarg);
         break;
       case ':':
         fprintf (stderr,"Option '%c' requires an argument.\n",optopt);
@@ -608,8 +614,8 @@ int main(int argc, char *argv[])
 
   threadpool pool(4);
   network net(pool);
-  log_info() << "Listen on port 8333";
-  net.listen(8333, std::bind(listening_started, _1, _2, listen_msgs, send_msgs));
+  log_info() << "Listen on port " << listen_port << "\n";
+  net.listen(listen_port, std::bind(listening_started, _1, _2, listen_msgs, send_msgs));
   if (mPeersAddresses.size() != 0)
     main_connect_loop(net, peersFilename, begin, end, listen_msgs, send_msgs);
   else

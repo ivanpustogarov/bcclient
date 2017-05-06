@@ -479,6 +479,9 @@ void connect_started(const std::error_code& ec, channel_ptr node, struct peer_ad
     // Finally send version message
     log_info() << "Sending version message";
     node->send(version, std::bind(version_sent, _1, node));
+    verack_type verack1;
+    log_info() << "Sending verack";
+    node->send(verack1, std::bind(verack_sent, _1, node));
     return;
 }
 
