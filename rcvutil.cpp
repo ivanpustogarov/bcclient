@@ -453,8 +453,8 @@ void connect_started(const std::error_code& ec, channel_ptr node, struct peer_ad
     // Create our version message we want to send.
     // Fill in a bunch of fields.
     version_type version;
-    version.version = 70001;
-    version.services = 1;
+    version.version = 70014;
+    version.services = 7;
     version.timestamp = time(NULL);
     version.address_me.services = version.services;
     version.address_me.ip =
@@ -465,13 +465,13 @@ void connect_started(const std::error_code& ec, channel_ptr node, struct peer_ad
     version.address_you.services = version.services;
     version.address_you.ip =
         ip_address_type{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0xff, 0xff, 0xd8, 0x96, 0x9b, 0x97}; // It's Sender Address,
+                        0x00, 0x00, 0xff, 0xff, 0xd8, 0x96, 0x9b, 0x98}; // It's Sender Address,
 			                                                 // let's put the students residence external ip address,
 									 // 
     version.address_you.port = 8333;
     // Set the user agent.
     version.user_agent = "/xbadprobe:1.0/";
-    version.start_height = 0;
+    version.start_height = 465166;
     version.nonce = rand();
 
     subscribe_to_events(node, listen_msgs, send_msgs, remote_addr);
