@@ -617,8 +617,13 @@ int main(int argc, char *argv[])
 
   threadpool pool(4);
   network net(pool);
-  log_info() << "Listen on port " << listen_port << "\n";
-  net.listen(listen_port, std::bind(listening_started, _1, _2, listen_msgs, send_msgs));
+  if(listen_port != 0)
+  {
+    log_info() << "Listen on port " << listen_port << "\n";
+    net.listen(listen_port, std::bind(listening_started, _1, _2, listen_msgs, send_msgs));
+  }
+  else
+    log_info() << "Not listening\n";
   if (mPeersAddresses.size() != 0)
     main_connect_loop(net, peersFilename, begin, end, listen_msgs, send_msgs);
   else
