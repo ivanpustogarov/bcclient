@@ -51,6 +51,17 @@ void output_to_file(std::ofstream& file, log_level level,
     file << ": " << body << std::endl;
 }
 
+void output_to_file_simple(std::ofstream& file, log_level level,
+    const std::string& domain, const std::string& body)
+{
+    if (body.empty())
+        return;
+    //file << level_repr(level);
+    //if (!domain.empty())
+    //    file << " [" << domain << "]";
+    file << body << std::endl;
+}
+
 void output_to_terminal(log_level level, const std::string& domain, const std::string& body)
 {
     if (body.empty())

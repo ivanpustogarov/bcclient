@@ -510,6 +510,7 @@ void accepted_connection(const std::error_code& ec, channel_ptr node, acceptor_p
     }
     num_open_connections++;
     log_info() << "Accepted connection: " << node->get_remote_endpoint();
+    log_custom() << node->get_remote_endpoint();
     log_info() << "Creating corresponing struct peer_address object";
     struct peer_address addr;
 

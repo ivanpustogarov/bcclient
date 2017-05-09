@@ -39,6 +39,8 @@ std::string level_repr(log_level level)
             return "ERROR";
         case log_level::fatal:
             return "FATAL";
+        case log_level::custom:
+            return "FATAL";
     }
     return "";
 }
@@ -127,6 +129,11 @@ logger_wrapper log_error(const std::string& domain)
 logger_wrapper log_fatal(const std::string& domain)
 {
     return logger_wrapper(log_level::fatal, domain);
+}
+
+logger_wrapper log_custom(const std::string& domain)
+{
+    return logger_wrapper(log_level::custom, domain);
 }
 
 } // namespace libbitcoin

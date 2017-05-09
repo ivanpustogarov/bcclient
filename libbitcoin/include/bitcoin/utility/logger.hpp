@@ -43,7 +43,8 @@ enum class log_level
     info,
     warning,
     error,
-    fatal
+    fatal,
+    custom
 };
 
 std::string level_repr(log_level level);
@@ -82,6 +83,7 @@ logger_wrapper log_info(const std::string& domain="");
 logger_wrapper log_warning(const std::string& domain="");
 logger_wrapper log_error(const std::string& domain="");
 logger_wrapper log_fatal(const std::string& domain="");
+logger_wrapper log_custom(const std::string& domain="");
 
 } // namespace libbitcoin
 

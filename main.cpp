@@ -484,6 +484,9 @@ int main(int argc, char *argv[])
   {
     log_debug().set_output_function(std::bind(output_to_null, std::ref(logfile), _1, _2, _3));
   }
+  std::ofstream ips_logfile;
+  ips_logfile.open("connected_ips", std::ios_base::app);
+  log_custom().set_output_function(std::bind(output_to_file_simple, std::ref(ips_logfile), _1, _2, _3));
 
   //std::cout << "To listen: ";
   //for (auto c : listen_msgs)
@@ -642,6 +645,8 @@ int main(int argc, char *argv[])
   log_info() << "Exited cleanely.";
   if (logfile.is_open())
     logfile.close();
+  if (ips_logfile.is_open())
+    ips_logfile.close();
   return 0;
 }
 
