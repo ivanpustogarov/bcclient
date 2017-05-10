@@ -1,10 +1,6 @@
 Bitcoin Network Probing Tool
 ============================
 
-NOTE: the current tool was developed in 2014-2015. Since then 
-the way Bitcoin network works might have changed. So some of this tool's
-functionality might not work as expected.
-
 Sometimes you want to query information a Bitcoin node, e.g.  the type
 of client it uses or its current timestamp.
 
